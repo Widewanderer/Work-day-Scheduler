@@ -18,18 +18,29 @@ $(document).ready(function () {
   ];
 
   for (let i = 0; i < rowId.length; i++) {
-    var input = document.querySelector("#${rowId[i]}.description");
-    var appointment = localStorage.getItem("rowId[i]"); // fill getItem() with ids from array
+    var input = $(`#${rowId[i]} .description`);
+    var appointment = localStorage.getItem(rowId[i]);
     if (appointment) {
-      input.value = appointment;
+      input.val(appointment);
     }
   }
-  var saveButton = document.querySelector(".saveBtn");
-  var saveInput = saveButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    var inputValue = input.value;
-    localStorage.setItem("rowId[i]", inputValue); // match first argument with variable appointment
+  var saveButtons = $(".saveBtn");
+  saveButtons.each((index, saveButton) => {
+    $(saveButton).on("click", (event) => {
+      event.preventDefault();
+      var input = $(`#${rowId[index]} .description`);
+      var inputValue = input.val();
+      localStorage.setItem(rowId[index], inputValue);
+      console.log(
+        `Input for ${rowId[index]} saved to local storage:`,
+        inputValue
+      );
+    });
   });
+
+  // var saveInput =
+  //   var inputValue = input.value;
+  //   localStorage.setItem("rowId[i]", inputValue); // match first argument with variable appointment
 
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
