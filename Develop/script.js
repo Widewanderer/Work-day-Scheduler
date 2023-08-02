@@ -5,6 +5,7 @@
 $(document).ready(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // create array here  ,,, using strings define ids being used, loop over array,, run all code though ,,, string interpralation
+  var currentHour = dayjs().hour();
   var rowId = [
     "hour-9",
     "hour-10",
@@ -16,6 +17,21 @@ $(document).ready(function () {
     "hour-16",
     "hour-17",
   ];
+
+  // id number without hyphin
+  var numRowId = [];
+  for (var i = 0; i < rowId.length; i++) {
+    var number = parseInt(rowId[i].split("-")[1]); // Extract the number after the hyphen
+    if (number < currentHour) {
+      $(`#${rowId[i]}`).addClass("past");
+    } else if (number === currentHour) {
+      $(`#${rowId[i]}`).addClass("present");
+    } else {
+      number > currentHour;
+      $(`#${rowId[i]}`).addClass("future");
+    }
+  }
+  console.log(numRowId);
 
   for (let i = 0; i < rowId.length; i++) {
     var input = $(`#${rowId[i]} .description`);
@@ -37,6 +53,8 @@ $(document).ready(function () {
       );
     });
   });
+
+  //
 
   // var saveInput =
   //   var inputValue = input.value;
@@ -63,8 +81,6 @@ $(document).ready(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-
-  var currentHour = dayjs().hour();
   console.log(currentHour);
   $("#currentDay").text(dayjs().format("dddd, MMMM D, YYYY H:mm A"));
 });
