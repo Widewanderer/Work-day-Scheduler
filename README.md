@@ -2,6 +2,10 @@
 
 Simple 9-5 workday calendar which allows users to save events for each hour.
 
+## Discription
+
+Simple 9-5 workday calendar. Time is automatically updated using DayJS and is displayed in the title. Time slots are color coded also based on Day.JS. Rows are displayed in Grey, Red, or Green for Past, Present, and Future.
+
 -- creat an eventlistener 'appointment' (button save to local storage )
 -- prevent default to keep text on page?
 -- colors Past: grey, Pres: Red , Fut: Green

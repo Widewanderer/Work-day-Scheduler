@@ -18,7 +18,7 @@ $(document).ready(function () {
     "hour-17",
   ];
 
-  // id number without hyphin
+  // Id number without hyphin
   var numRowId = [];
   for (var i = 0; i < rowId.length; i++) {
     var number = parseInt(rowId[i].split("-")[1]); // Extract the number after the hyphen
